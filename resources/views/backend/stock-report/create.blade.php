@@ -24,7 +24,7 @@
                                     <select name="product_id" id="" class='form-control'>
                                     <option>---Select Product----</option>
                                     @foreach($products as $product)
-                                        <option value="{{$product->id}}">{{$product->product_name}}</option>
+                                        <option value="{{$product->id}}" {{old('product_id') == $product->id ? 'selected' : ''}}>{{$product->product_name}}</option>
                                     @endforeach
                                     </select>
                                     @if($errors->has('product_id'))

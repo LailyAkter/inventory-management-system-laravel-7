@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Admin\Supplier;
+use Brian2694\Toastr\Facades\Toastr;
 
 class SupplierController extends Controller
 {
@@ -50,6 +51,8 @@ class SupplierController extends Controller
         $supplier->phone = $request->phone;
         $supplier->address = $request->address;
         $supplier->save();
+
+        Toastr::success('Supplier Saved Successfully','Success');
 
         return redirect()->route('supplier.index');
     }
@@ -99,6 +102,8 @@ class SupplierController extends Controller
         $supplier->address = $request->address;
         $supplier->save();
 
+        Toastr::success('Supplier Updated Successfully','Success');
+
         return redirect()->route('supplier.index');
     }
 
@@ -112,6 +117,9 @@ class SupplierController extends Controller
     {
         $supplier = Supplier::findOrFail($id);
         $supplier->delete();
+
+        Toastr::error('Supplier Delete Successfully','Success');
+
         return redirect()->route('supplier.index');
     }
 }

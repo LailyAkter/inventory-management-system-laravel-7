@@ -23,77 +23,77 @@
                                 <label for="inputName">Product Name</label>
                                 <input 
                                     type="text" 
-                                    class="form-control" 
+                                    class="form-control @error('product_name') is-invalid @enderror" 
                                     name='product_name'
                                     placeholder='Product Name'
                                     value="{{old('product_name')}}"
                                 />
                                 @if($errors->has('product_name'))
-                                    <span class='text-danger'>Product Name is Required</span>
+                                    <div class='invalid-feedback'>Product Name is Required</div>
                                 @endif
                             </div>
                             <div class="form-group">
                                 <label for="inputName">Supplier Name</label>
-                                    <select name="supplier_id" id="" class='form-control'>
+                                    <select name="supplier_id" id="" class='form-control @error("supplier_id") is-invalid @enderror'>
                                     <option>---Select Supplier----</option>
                                     @foreach($suppliers as $supplier)
-                                        <option value="{{$supplier->id}}">{{$supplier->sup_name}}</option>
+                                        <option value="{{$supplier->id}}" {{old('supplier_id') == $supplier->id ? 'selected' : ''}}>{{$supplier->sup_name}}</option>
                                     @endforeach
                                     </select>
                                 @if($errors->has('supplier_id'))
-                                    <span class='text-danger'>Supplier Name is Required</span>
+                                    <div class='invalid-feedback'>Supplier Name is Required</div>
                                 @endif
                             </div>
                             <div class="form-group">
                                 <label for="inputName">Purchase ID</label>
                                 <input 
                                     type="text" 
-                                    class="form-control" 
+                                    class="form-control @error('purchase_id') is-invalid @enderror" 
                                     name='purchase_id'
                                     placeholder='Purchase ID'
                                     value="{{old('purchase_id')}}"
                                 />
                                 @if($errors->has('purchase_id'))
-                                    <span class='text-danger'>Purchase ID is Required</span>
+                                    <div class='invalid-feedback'>Purchase ID is Required</div>
                                 @endif
                             </div>
                             <div class="form-group">
                                 <label for="inputName">Quantity</label>
                                 <input 
                                     type="number" 
-                                    class="form-control" 
+                                    class="form-control @error('quantity') is-invalid @enderror" 
                                     name='quantity'
                                     placeholder='Quantity'
                                     value="{{old('quantity')}}"
                                 />
                                 @if($errors->has('quantity'))
-                                    <span class='text-danger'>Quantity is Required</span>
+                                    <div class='invalid-feedback'>Quantity is Required</div>
                                 @endif
                             </div>
                             <div class="form-group">
                                 <label for="inputName">Buying Price</label>
                                 <input 
                                     type="number" 
-                                    class="form-control" 
+                                    class="form-control @error('buying_price') is-invalid @enderror" 
                                     name='buying_price'
                                     placeholder='Buying Price'
                                     value="{{old('buying_price')}}"
                                 />
                                 @if($errors->has('buying_price'))
-                                    <span class='text-danger'>Buying Price is Required</span>
+                                    <div class='invalid-feedback'>Buying Price is Required</div>
                                 @endif
                             </div>
                             <div class="form-group">
                                 <label for="inputName">Purchase Date</label>
                                 <input 
                                     type="date" 
-                                    class="form-control" 
+                                    class="form-control @error('pur_date') is-invalid @enderror" 
                                     name='pur_date'
                                     placeholder='Purchase Date'
                                     value="{{old('pur_date')}}"
                                 />
                                 @if($errors->has('pur_date'))
-                                    <span class='text-danger'>Purchase Date is Required</span>
+                                    <div class='invalid-feedback'>Purchase Date is Required</div>
                                 @endif
                             </div>
                             <button type='submit' class='btn btn-success'>Create Purchase</button>

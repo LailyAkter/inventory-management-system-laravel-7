@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Admin\Customer;
+use Brian2694\Toastr\Facades\Toastr;
 
 class CustomerController extends Controller
 {
@@ -52,6 +53,8 @@ class CustomerController extends Controller
         $customer->address = $request->address;
         $customer->country = $request->country;
         $customer->save();
+
+        Toastr::success('Customer Saved Successfully','Success');
 
         return redirect()->route('customer.index');
     }
@@ -101,9 +104,11 @@ class CustomerController extends Controller
         $customer->cust_name = $request->cust_name;
         $customer->email = $request->email;
         $customer->phone = $request->phone;
-        $customer->address = $request->address;
+        $customer->address = trim($request->address);
         $customer->country = $request->country;
         $customer->save();
+
+        Toastr::success('Customer Updated Successfully','Success');
 
         return redirect()->route('customer.index');
     }
@@ -118,6 +123,9 @@ class CustomerController extends Controller
     {
         $customer = Customer::findOrFail($id);
         $customer->delete();
+
+        Toastr::error('Customer Deleted Successfully','Success');
+
         return redirect()->route('customer.index');
     }
 }

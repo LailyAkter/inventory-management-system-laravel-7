@@ -72,12 +72,6 @@
                                                     {{$stock->product->stock}}
                                                 @endif
                                             </td>
-                                            <td class="project-actions text-right">
-                                                <a class="btn btn-info btn-sm" href="{{route('stock.edit',$stock->id)}}">
-                                                    <i class="fas fa-pencil-alt"></i>
-                                                    Edit
-                                                </a>
-                                            </td>
                                             <td>
                                                 <form action="{{route('stock.destroy',$stock->id)}}" method='POST' enctype="multipart/form-data">
                                                     @csrf

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Admin\Category;
 use Illuminate\Support\Str;
+use Brian2694\Toastr\Facades\Toastr;
 
 class CategoryController extends Controller
 {
@@ -45,9 +46,8 @@ class CategoryController extends Controller
         $category->category_name = $request->category_name;
         $category->slug = Str::slug($request->category_name);
         $category->save();
+        Toastr::success('Category Saved Successfully','Success');
         return redirect()->route('category.index');
-            
-
     }
 
     /**
@@ -92,8 +92,8 @@ class CategoryController extends Controller
         $category->category_name = $request->category_name;
         $category->slug = Str::slug($request->category_name);
         $category->save();
+        Toastr::success('Category Updated Successfully','Success');
         return redirect()->route('category.index');
-
     }
 
     /**
@@ -106,6 +106,7 @@ class CategoryController extends Controller
     {
         $category = Category::findOrFail($id);
         $category->delete();
+        Toastr::error('Category Delete Successfully','Success');
         return redirect()->route('category.index');
     }
 }

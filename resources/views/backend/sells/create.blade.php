@@ -20,14 +20,14 @@
                         @csrf
                             <div class="form-group">
                                 <label for="inputName">Product Name</label>
-                                    <select name="product_id" id="" class='form-control'>
+                                    <select name="product_id" id="" class="form-control @error('product_id') is-invalid @enderror">
                                     <option>---Select Product----</option>
                                     @foreach($products as $product)
-                                        <option value="{{$product->id}}">{{$product->product_name}}</option>
+                                        <option value="{{$product->id}}" {{old("product_id") == $product->id ? "selected": ""}}>{{$product->product_name}}</option>
                                     @endforeach
                                     </select>
                                 @if($errors->has('product_id'))
-                                    <span class='text-danger'>Product Name is Required</span>
+                                    <span class='invalid-feedback'>Product Name is Required</span>
                                 @endif
                             </div>
                             <div class="form-group">
@@ -35,13 +35,13 @@
                                 <input 
                                     type="number" 
                                     id="inputName" 
-                                    class="form-control" 
+                                    class="form-control @error('amount') is-invalid @enderror" 
                                     name='amount'
                                     placeholder='Enter Price'
                                     value="{{old('amount')}}"
                                 />
                                 @if($errors->has('amount'))
-                                    <span class='text-danger'>Price is Required</span>
+                                    <span class='invalid-feedback'>Price is Required</span>
                                 @endif
                             </div>
                             <div class="form-group">
@@ -49,13 +49,13 @@
                                 <input 
                                     type="number" 
                                     id="inputName" 
-                                    class="form-control" 
+                                    class="form-control @error('qty') is-invalid @enderror" 
                                     name='qty'
                                     placeholder='Quantity'
                                     value="{{old('qty')}}"
                                 />
                                 @if($errors->has('qty'))
-                                    <span class='text-danger'>Quantity is Required</span>
+                                    <span class='invalid-feedback'>Quantity is Required</span>
                                 @endif
                             </div>
                             <div class="form-group">
@@ -63,13 +63,13 @@
                                 <input 
                                     type="date" 
                                     id="inputName" 
-                                    class="form-control" 
+                                    class="form-control @error('sell_date') is-invalid @enderror" 
                                     name='sell_date'
                                     placeholder='Sell Date'
                                     value="{{old('sell_date')}}"
                                 />
                                 @if($errors->has('sell_date'))
-                                    <span class='text-danger'>Sell Date is Required</span>
+                                    <span class='invalid-feedback'>Sell Date is Required</span>
                                 @endif
                             </div>
                             <button type='submit' class='btn btn-success'>Create Sell</button>

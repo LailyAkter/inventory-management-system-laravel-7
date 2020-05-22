@@ -25,13 +25,13 @@
                                 <input 
                                     type="text" 
                                     id="inputName" 
-                                    class="form-control" 
+                                    class="form-control @error('sup_name') is-invalid @enderror" 
                                     name='sup_name'
                                     placeholder='Supplier Name'
                                     value="{{$supplier->sup_name}}"
                                 />
                                 @if($errors->has('sup_name'))
-                                    <span class='text-danger'>Supplier Name is Required</span>
+                                    <div class='invalid-feedback'>Supplier Name is Required</div>
                                 @endif
                             </div>
                             <div class="form-group">
@@ -39,13 +39,13 @@
                                 <input 
                                     type="email" 
                                     id="inputName" 
-                                    class="form-control" 
+                                    class="form-control @error('email') is-invalid @enderror" 
                                     name='email'
                                     placeholder='Email'
                                     value="{{$supplier->email}}"
                                 />
                                 @if($errors->has('email'))
-                                    <span class='text-danger'>Email is Required</span>
+                                    <div class='invalid-feedback'>Email is Required</div>
                                 @endif
                             </div>
                             <div class="form-group">
@@ -53,26 +53,26 @@
                                 <input 
                                     type="number" 
                                     id="inputName" 
-                                    class="form-control" 
+                                    class="form-control @error('phone') is-invalid @enderror" 
                                     name='phone'
                                     placeholder='Phone'
                                     value="{{$supplier->phone}}"
                                 />
                                 @if($errors->has('phone'))
-                                    <span class='text-danger'>Phone is Required</span>
+                                    <div class='invalid-feedback'>Phone is Required</div>
                                 @endif
                             </div>
                             <div class="form-group">
                                 <label for="inputName">Address</label>
                                 <textarea 
-                                    class="form-control" 
+                                    class="form-control @error('address') is-invalid @enderror" 
                                     name='address'
                                     placeholder='Address'
                                 >
                                 {{$supplier->address}}
                                 </textarea>
                                 @if($errors->has('address'))
-                                    <span class='text-danger'>Address is Required</span>
+                                    <div class='invalid-feedback'>Address is Required</div>
                                 @endif
                             </div>
                             <button type='submit' class='btn btn-success'>Update Supplier</button>

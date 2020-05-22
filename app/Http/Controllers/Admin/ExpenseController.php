@@ -8,7 +8,7 @@ use App\Admin\Expense;
 use App\Http\Resources\Expense\ExpenseResource;
 use App\Http\Resources\Expense\ExpenseCollection;
 use Carbon\Carbon;
-
+use Brian2694\Toastr\Facades\Toastr;
 
 class ExpenseController extends Controller
 {
@@ -72,6 +72,9 @@ class ExpenseController extends Controller
         //         ],201
         //     );
         // }
+
+        Toastr::success('Expense Saved Successfully','Success');
+
         return redirect()->route('expense.index');
     }
 
@@ -137,6 +140,9 @@ class ExpenseController extends Controller
         //         ],201
         //     );
         // }
+
+        Toastr::success('Expense Updated Successfully','Success');
+
         return redirect()->route('expense.index');
     }
 
@@ -157,6 +163,9 @@ class ExpenseController extends Controller
         //         ],401
         //     );
         // }
+
+        Toastr::error('Expense Deleted Successfully','Success');
+        
         return redirect()->route('expense.index');
     }
 

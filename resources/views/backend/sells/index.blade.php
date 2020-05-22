@@ -61,12 +61,6 @@
                                             <td>${{number_format($sell->amount,2) }}</td>
                                             <td>{{$sell->qty}}</td>
                                             <td>{{$sell->sell_date}}</td>
-                                            <td class="project-actions text-right">
-                                                <a class="btn btn-info btn-sm" href="{{route('sell.edit',$sell->id)}}">
-                                                    <i class="fas fa-pencil-alt"></i>
-                                                    Edit
-                                                </a>
-                                            </td>
                                             <td>
                                                 <form action="{{route('sell.destroy',$sell->id)}}" method='POST' enctype="multipart/form-data">
                                                     @csrf

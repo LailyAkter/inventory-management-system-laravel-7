@@ -13,6 +13,7 @@ use App\Http\Resources\Product\ProductResource;
 use App\Http\Resources\Product\ProductCollection;
 use Intervention\Image\Facades\Image;
 use DB;
+use Brian2694\Toastr\Facades\Toastr;
 
 class ProductController extends Controller
 {
@@ -111,6 +112,9 @@ class ProductController extends Controller
         $product->qty_per_carton = $request->qty_per_carton;
         // dd($product);
         $product->save();
+
+        Toastr::success('Product Saved Successfully','Success');
+        
         return redirect()->route('product.index');
     }
 
@@ -203,6 +207,8 @@ class ProductController extends Controller
         $product->qty_per_carton = $request->qty_per_carton;
         $product->save();
 
+        Toastr::success('Product Updated Successfully','Success');
+
         return redirect()->route('product.index');
     }
 
@@ -220,6 +226,9 @@ class ProductController extends Controller
             Storage::disk('public')->delete('product/'.$products->image);
         }
         $products->delete();
+
+        Toastr::error('Product Deleted Successfully','Success');
+
         return redirect()->route('product.index');
     }
 }

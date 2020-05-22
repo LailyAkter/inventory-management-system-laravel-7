@@ -25,13 +25,13 @@
                                 <input 
                                     type="text" 
                                     id="inputName" 
-                                    class="form-control" 
+                                    class="form-control @error('cust_name') is-invalid @enderror " 
                                     name='cust_name'
                                     placeholder='Customer Name'
                                     value="{{$customer->cust_name}}"
                                 />
                                 @if($errors->has('cust_name'))
-                                    <span class='text-danger'>Customer Name is Required</span>
+                                    <div class='invalid-feedback'>Customer Name is Required</div>
                                 @endif
                             </div>
                             <div class="form-group">
@@ -39,13 +39,13 @@
                                 <input 
                                     type="email" 
                                     id="inputName" 
-                                    class="form-control" 
+                                    class="form-control @error('email') is-invalid @enderror " 
                                     name='email'
                                     placeholder='Email'
                                     value="{{$customer->email}}"
                                 />
                                 @if($errors->has('email'))
-                                    <span class='text-danger'>Email is Required</span>
+                                    <div class='invalid-feedback'>Email is Required</div>
                                 @endif
                             </div>
                             <div class="form-group">
@@ -53,26 +53,26 @@
                                 <input 
                                     type="number" 
                                     id="inputName" 
-                                    class="form-control" 
+                                    class="form-control @error('phone') is-invalid @enderror " 
                                     name='phone'
                                     placeholder='Phone'
                                     value="{{$customer->phone}}"
                                 />
                                 @if($errors->has('phone'))
-                                    <span class='text-danger'>Phone is Required</span>
+                                    <span class='invalid-feedback'>Phone is Required</span>
                                 @endif
                             </div>
                             <div class="form-group">
                                 <label for="inputName">Address</label>
                                 <textarea 
-                                    class="form-control" 
+                                    class="form-control @error('address') is-invalid @enderror " 
                                     name='address'
                                     placeholder='Address'
                                 >
                                 {{$customer->address}}
                                 </textarea>
                                 @if($errors->has('address'))
-                                    <span class='text-danger'>Address is Required</span>
+                                    <span class='invalid-feedback'>Address is Required</span>
                                 @endif
                             </div>
                             <div class="form-group">
@@ -80,16 +80,16 @@
                                 <input 
                                     type="text" 
                                     id="inputName" 
-                                    class="form-control" 
+                                    class="form-control @error('country') is-invalid @enderror " 
                                     name='country'
                                     placeholder='Country'
                                     value="{{$customer->country}}"
                                 />
                                 @if($errors->has('country'))
-                                    <span class='text-danger'>Country is Required</span>
+                                    <span class='invalid-feedback'>Country is Required</span>
                                 @endif
                             </div>
-                            <button type='submit' class='btn btn-success'>Edit customer</button>
+                            <button type='submit' class='btn btn-success'>Edit Customer</button>
                             <a href="{{route('customer.index')}}" class='btn btn-danger'>Back</a>
                         </form>
                     </div>

@@ -27,13 +27,13 @@
                                 <input 
                                     type="text" 
                                     id="inputName" 
-                                    class="form-control" 
+                                    class="form-control @error('category_name') is-invalid @enderror" 
                                     name='category_name'
                                     placeholder='Category Name'
                                     value="{{old('category_name')}}"
                                 />
                                 @if($errors->has('category_name'))
-                                    <span class='text-danger'>Category Name is Required</span>
+                                    <div class="invalid-feedback" style='font-size:16px'>Category Name is Required</div>
                                 @endif
                             </div>
                             <button type='submit' class='btn btn-success'>Create Category</button>

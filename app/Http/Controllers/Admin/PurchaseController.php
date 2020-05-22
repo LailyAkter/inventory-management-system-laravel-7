@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Admin\Purchase;
 use App\Admin\Supplier;
+use Brian2694\Toastr\Facades\Toastr;
 
 class PurchaseController extends Controller
 {
@@ -56,6 +57,7 @@ class PurchaseController extends Controller
         $purchase->buying_price = $request->buying_price;
         $purchase->pur_date = $request->pur_date;
         $purchase->save();
+        Toastr::success('Purchase Saved Successfully','Success');
         return redirect()->route('purchase.index');
     }
 
@@ -108,6 +110,7 @@ class PurchaseController extends Controller
         $purchase->buying_price = $request->buying_price;
         $purchase->pur_date = $request->pur_date;
         $purchase->save();
+        Toastr::success('Purchase Updated Successfully','Success');
         return redirect()->route('purchase.index');
     }
 
@@ -121,6 +124,7 @@ class PurchaseController extends Controller
     {
         $purchase = Purchase::findOrFail($id);
         $purchase->delete();
+        Toastr::error('Purchase Deleted Successfully','Success');
         return redirect()->route('purchase.index');
     }
 }

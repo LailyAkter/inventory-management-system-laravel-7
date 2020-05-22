@@ -8,6 +8,7 @@ use App\Admin\Sell;
 use App\Admin\Product;
 use DB;
 use App\Admin\ProductSell;
+use Brian2694\Toastr\Facades\Toastr;
 
 class SellController extends Controller
 {
@@ -61,8 +62,9 @@ class SellController extends Controller
             $product = Product::find($request->product_id);
             $product->quantity = $product->quantity - $request->qty;
             $product->save();
+            Toastr::success('Sell Saved Successfully','Success');
         }else{
-            dd('product quantity is not enough');
+            Toastr::warning('product quantity is not enough','Success');
         }
         
         return redirect()->route('sell.index');
@@ -80,54 +82,6 @@ class SellController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        $products = Product::latest()->get();
-        $sell = Sell::findOrFail($id);
-        return view('backend.sells.edit',compact(['sell','products']));
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        // $sell = Sell::findOrFail($id);
-        // $data = $request->validate([
-        //     'amount'=>'required',
-        //     'qty'=>'required',
-        //     'sell_date'=>'required',
-        // ]);
-
-        // $product = Product::find($request->product_id);
-        // if($request->qty<$product->quantity && $product->stock > 0 ){
-        //     $sell->amount = $request->amount;
-        //     $sell->qty = $request->qty;
-        //     $sell->sell_date = $request->sell_date;
-        //     $sell->product_id = $request->product_id;
-        //     $sell->save();
-
-        //     $product = Product::find($request->product_id);
-        //     $product->quantity = $product->quantity - $request->qty;
-        //     $product->save();
-        // }else{
-        //     dd('product quantity is not enough');
-        // }
-
-        // $sell->save();
-        // return redirect()->route('sell.index');
-    }
-
-    /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
@@ -137,6 +91,7 @@ class SellController extends Controller
     {
         $sell = Sell::findOrFail($id);
         $sell->delete();
+        Toastr::error('Sell Deleted Successfully','Success');
         return redirect()->route('sell.index');
     }
 

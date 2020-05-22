@@ -24,13 +24,13 @@
                                 <input 
                                     type="text" 
                                     id="inputName" 
-                                    class="form-control" 
+                                    class="form-control @error('expense_item') is-invalid @enderror" 
                                     name='expense_item'
                                     placeholder='Expense Item'
                                     value="{{$expense->expense_item}}"
                                 />
                                 @if($errors->has('expense_item'))
-                                    <span class='text-danger'>Expense Item is Required</span>
+                                    <div class='invalid-feedback'>Expense Item is Required</div>
                                 @endif
                             </div>
                             <div class="form-group">
@@ -38,13 +38,13 @@
                                 <input 
                                     type="number" 
                                     id="inputName" 
-                                    class="form-control" 
+                                    class="form-control @error('amount') is-invalid @enderror" 
                                     name='amount'
                                     placeholder='Amount'
                                     value="{{$expense->amount}}"
                                 />
                                 @if($errors->has('amount'))
-                                    <span class='text-danger'>Amount is Required</span>
+                                    <div class='invalid-feedback'>Amount is Required</div>
                                 @endif
                             </div>
                             <button type='submit' class='btn btn-success'>Update Expense</button>
