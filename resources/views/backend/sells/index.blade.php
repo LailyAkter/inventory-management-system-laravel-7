@@ -8,7 +8,9 @@
             <div class="row mb-2">
                 <div class="col-sm-6">
                     <a href="{{route('sell.create')}}" class='btn btn-primary' style='font-size:20px;'>
-                        <i class="fas fa-plus">Add Sell</i>
+                        <i class="fas fa-plus">
+                        <span style='margin-left:5px'>Add Sell</span>
+                        </i>
                     </a>
                     <a href="{{url('/admin/today_sell')}}" class='btn btn-danger'>Today Sell</a>
                     <a href="{{URL::to('/admin/month_sell')}}" class='btn btn-info'>Month Sell</a>
@@ -49,7 +51,7 @@
                                         <th>Price</th>
                                         <th>Quantity</th>
                                         <th>Sell Date</th>
-                                        <th>Action</th>
+                                        <th width='8%'>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -67,7 +69,7 @@
                                                     @method('DELETE')
                                                     <button  type='submit' class="btn btn-danger btn-sm mt-3">
                                                         <i class="fas fa-trash"></i>
-                                                        Delete
+                                                        <span style='margin-left:5px'>DELETE</span>
                                                     </button>
                                                 </form>
                                             </td>

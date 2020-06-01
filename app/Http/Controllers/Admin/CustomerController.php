@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Admin\Customer;
 use Brian2694\Toastr\Facades\Toastr;
+use App\Notifications\NewCustomerAdd;
+use Illuminate\Support\Facades\Notification;
 
 class CustomerController extends Controller
 {
@@ -14,9 +16,15 @@ class CustomerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $customers = Customer::latest()->get();
+
+        // Json Format for postman
+        if($request->expectsJson()){
+            return response()->json($customers);
+        }
+
         return view('backend.customers.index',compact('customers'));
     }
 
@@ -54,6 +62,15 @@ class CustomerController extends Controller
         $customer->country = $request->country;
         $customer->save();
 
+        // Json Format for postman
+        if($request->expectsJson()){
+            return response()->json($customer);
+        }
+            
+        // Mail send
+        Notification::route('mail',$customer->email)
+            ->notify(new NewCustomerAdd($customer));
+        
         Toastr::success('Customer Saved Successfully','Success');
 
         return redirect()->route('customer.index');
@@ -65,10 +82,14 @@ class CustomerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id,Request $request)
     {
         $customer = Customer::findOrFail($id);
-        return response()->json($customer);
+
+        // Json Format for postman
+        if($request->expectsJson()){
+            return response()->json($customer);
+        }
     }
 
     /**
@@ -108,6 +129,11 @@ class CustomerController extends Controller
         $customer->country = $request->country;
         $customer->save();
 
+        // Json Format for postman
+        if($request->expectsJson()){
+            return response()->json($customer);
+        }
+
         Toastr::success('Customer Updated Successfully','Success');
 
         return redirect()->route('customer.index');
@@ -119,11 +145,16 @@ class CustomerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id,Request $request)
     {
         $customer = Customer::findOrFail($id);
         $customer->delete();
 
+        // Json Format for postman
+        if($request->expectsJson()){
+            return response()->json($customer);
+        }
+        
         Toastr::error('Customer Deleted Successfully','Success');
 
         return redirect()->route('customer.index');

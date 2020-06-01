@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Admin\Purchase;
 use App\Admin\Sell;
 use App\Admin\Product;
+use App\Admin\Customer;
 
 class DashboardController extends Controller
 {
@@ -14,6 +15,7 @@ class DashboardController extends Controller
         $purchases = Purchase::latest()->get();
         $sells = Sell::latest()->get();
         $products = Product::latest()->get();
-        return view('backend.dashboard',compact(['purchases','sells','products']));
+        $customers = Customer::latest()->get();
+        return view('backend.dashboard',compact(['purchases','sells','products','customers']));
     }
 }

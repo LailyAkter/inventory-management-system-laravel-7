@@ -29,11 +29,17 @@ Route::middleware('auth')->namespace('Admin')->prefix('admin')->group(function()
     Route::get('yearly_expense/{year?}','ExpenseController@yearly_expense');
     Route::resource('product','ProductController');
     Route::resource('stock','StockController');
+
     Route::resource('sell','SellController');
     Route::get('today_sell','SellController@today_sell');
+    Route::get('api/getprice',"SellController@getPrice");
+
     Route::get('/totalProfit','SellController@totalProfit');
     Route::resource('purchase','PurchaseController');
     Route::resource('order','OrderController');
+    Route::get('setting','SettingController@index');
+    Route::put('update/profile','SettingController@updateProfile')->name('profile.update');
+    Route::put('change/password','SettingController@changePassword')->name('change.password');
 });
 Auth::routes();
 

@@ -2,7 +2,7 @@
 @section('title','Edit Category')
 @section('content')
     <section class="content">
-        <div class="row justify-content-center">
+        <div class="row justify-content-center mt-4">
             <div class="col-md-10">
                 @if(session('category'))
                 <div class='text-success'>{{session('category')}}</div>

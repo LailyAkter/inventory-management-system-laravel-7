@@ -1,0 +1,194 @@
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+h1.h2,
+h3,
+h4,
+h5,
+h6,
+p,
+li,
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+a,
+a:hover {
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+/*  menu part start */
+.menu_part {
+    background-color: #105fe8;
+    color:#fff;
+    padding:12px;
+}
+.nav_list a {
+    display: block;
+    color:#fff;
+    padding: 0px 1rem;
+    font-size: 1.4rem;
+    text-transform: capitalize;
+    transition: color 650ms;
+}
+
+.nav_list a:hover {
+    color: #000;
+}
+
+/* menu part end */
+
+/* banner part start */
+.banner_part{
+	width: 100%;
+	position: relative;
+	background-size: cover;
+	background-repeat:no-repeat;
+	background-position: center;
+}
+.banner_part img{
+    height:600px;
+}
+
+.banner_part .banner_overlay{
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, .6);
+}
+.banner_content h2{
+	font-size:24px;
+	color: #282828;
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 700;
+	padding: 10px 0px;
+	text-transform: capitalize;
+}
+.banner_content p{
+	font-size:16px;
+	line-height: 26px;
+	letter-spacing: 2px;
+	font-family: 'Lato', sans-serif;
+	font-weight: 400;
+	padding: 12px 0px;
+	color: #282828;
+	text-align: justify-content;
+}
+/* banner part end */
+
+
+/* Register part start */
+.main-w3layouts  h2{
+	color: #282828;
+}
+.main-agileinfo {
+    width: 50%;
+    margin: 1em auto;
+    background:#105fe8;
+    color: #fff;
+}
+.agileits-top {
+    padding: 3em;
+}
+input[type="text"], input[type="email"], input[type="password"] {
+    font-size: 0.9em;
+    color: #fff;
+    font-weight: 100;
+    width: 94.5%;
+    display: block;
+    border: none;
+    padding: 0.8em;
+    border: solid 1px rgba(255, 255, 255, 0.37);
+    -webkit-transition: all 0.3s cubic-bezier(0.64, 0.09, 0.08, 1);
+    transition: all 0.3s cubic-bezier(0.64, 0.09, 0.08, 1);
+    background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0) 96%, #fff 4%);
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 96%, #fff 4%);
+    background-position: -800px 0;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    font-family: 'Open Sans', sans-serif;
+}
+
+input.email, input.text.w3lpass {
+    margin: 2em 0;
+}
+
+.text:focus, .text:valid {
+    box-shadow: none;
+    outline: none;
+    background-position: 0 0;
+}
+
+.text:focus::-webkit-input-placeholder, .text:valid::-webkit-input-placeholder {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: .9em;
+    -webkit-transform: translateY(-30px);
+    -moz-transform: translateY(-30px);
+    -o-transform: translateY(-30px);
+    -ms-transform: translateY(-30px);
+    transform: translateY(-30px);
+    visibility: visible !important;
+}
+
+::-webkit-input-placeholder {
+    color: #fff;
+    font-weight: 100;
+}
+
+:-moz-placeholder {
+  /* Firefox 18- */
+    color: #fff;
+}
+
+::-moz-placeholder {
+  /* Firefox 19+ */
+    color: #fff;
+}
+
+:-ms-input-placeholder {
+    color: #fff;
+}
+
+input[type="submit"] {
+    font-size: .9em;
+    color: #fff;
+    background: #105fe8;
+    outline: none;
+    border: 1px solid #105fe8;
+    cursor: pointer;
+    padding: 0.9em;
+    -webkit-appearance: none;
+    width: 100%;
+    margin: 2em 0;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+}
+input[type="submit"]:hover {
+    -webkit-transition: .5s all;
+    -moz-transition: .5s all;
+    -o-transition: .5s all;
+    -ms-transition: .5s all;
+    transition: .5s all;
+    background: #fff;
+    color: #000;
+}
+/* Register part end */
+
+
+

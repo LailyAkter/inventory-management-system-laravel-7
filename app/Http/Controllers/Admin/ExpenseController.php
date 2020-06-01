@@ -12,9 +12,6 @@ use Brian2694\Toastr\Facades\Toastr;
 
 class ExpenseController extends Controller
 {
-    // public function __construct(){
-    //     $this->middleware('auth:api')->except('index','show');
-    // }
     /**
      * Display a listing of the resource.
      *
@@ -23,14 +20,13 @@ class ExpenseController extends Controller
     public function index(Request $request)
     {
         $expenses = Expense::latest()->get();
-        // if($request->acceptsJson()){
-        //     return response(
-        //         [
-        //         'data' =>ExpenseResource::collection($expenses)
-        //         ],201
-        //     );
-        // }
-        return view('backend.expenses.index',compact('expenses'));
+        // Json Format for postman
+        if($request->expectsJson()){
+            return response()->json($expenses);
+        }else{
+            // admin 
+            return view('backend.expenses.index',compact('expenses'));
+        }
     }
 
     /**
@@ -65,16 +61,13 @@ class ExpenseController extends Controller
         $expense->year = $date->format('Y');
         $expense->date = $date->format('Y-m-d');
         $expense->save();
-        // if($request->acceptsJson()){
-        //     return response(
-        //         [
-        //         'data' => new ExpenseResource($expense)
-        //         ],201
-        //     );
-        // }
+
+         // json format
+        if($request->expectsJson()){
+            return response()->json($expense);
+        }
 
         Toastr::success('Expense Saved Successfully','Success');
-
         return redirect()->route('expense.index');
     }
 
@@ -86,12 +79,11 @@ class ExpenseController extends Controller
      */
     public function show($id, Request $request)
     {
-        // $expense = Expense::findOrFail($id);
-        //     return response(
-        //         [
-        //         'data' => new ExpenseResource($expense)
-        //         ],201
-        //     );
+        $expenses = Expense::findOrFail($id);
+        // Json Format for postman
+        if($request->expectsJson()){
+            return response()->json($expenses);
+        }
     }
 
     /**
@@ -103,12 +95,6 @@ class ExpenseController extends Controller
     public function edit($id)
     {
         $expense = Expense::findOrFail($id);
-        // if($request->acceptsJson()){
-        //     return response(
-        //         [
-        //         'data' =>ExpenseResource::collection($expense)
-        //         ],201);
-        // }
         return view('backend.expenses.edit',compact('expense'));
     }
 
@@ -133,13 +119,11 @@ class ExpenseController extends Controller
         $expense->expense_item = $request->expense_item;
         $expense->amount = $request->amount;
         $expense->save();
-        // if($request->acceptsJson()){
-        //     return response(
-        //         [
-        //         'data' => new ExpenseResource($expense)
-        //         ],201
-        //     );
-        // }
+
+        // Json Format for postman
+        if($request->expectsJson()){
+            return response()->json($expense);
+        }
 
         Toastr::success('Expense Updated Successfully','Success');
 
@@ -156,13 +140,11 @@ class ExpenseController extends Controller
     {
         $expense = Expense::findOrFail($id);
         $expense->delete();
-        // if($request->acceptsJson()){
-        //     return response(
-        //         [
-        //         'data' => new ExpenseResource($expense)
-        //         ],401
-        //     );
-        // }
+        
+        // Json Format for postman
+        if($request->expectsJson()){
+            return response()->json($expense);
+        }
 
         Toastr::error('Expense Deleted Successfully','Success');
         

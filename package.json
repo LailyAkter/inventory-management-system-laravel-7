@@ -25,6 +25,7 @@
         "sass-loader": "^8.0.0"
     },
     "dependencies": {
-        "ajax": "0.0.4"
+        "ajax": "0.0.4",
+        "react-router-dom": "^5.2.0"
     }
 }

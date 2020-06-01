@@ -3,7 +3,7 @@
 @section('content')
 <div>
     <section class="content">
-        <div class="row justify-content-center">
+        <div class="row justify-content-center mt-4">
             @if(session('category'))
                 <div class='alert alert-success mt-3'>{{session('category')}}</div>
             @endif

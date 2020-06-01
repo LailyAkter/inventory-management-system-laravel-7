@@ -1,12 +1,10 @@
 @extends('layouts.backend.master')
-
 @section('title', 'Yearly Expenses')
-
 @section('content')
     <div>
         <section class="content-header">
             <div class="container-fluid">
-                <div class="row mb-2">
+                <div class="row mb-3 mt-1">
                     <div class="col-md-12">
                         <h2>
                         Yearly Expense
@@ -42,7 +40,7 @@
                                         <th>Expense Title</th>
                                         <th>Amount</th>
                                         <th>Date</th>
-                                        <th>Actions</th>
+                                        <th width='8%'>Actions</th>
                                     </tr>
                                     </thead>
                                     <tbody>

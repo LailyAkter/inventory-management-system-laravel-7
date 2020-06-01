@@ -14,12 +14,12 @@ use App\Http\Resources\Product\ProductCollection;
 use Intervention\Image\Facades\Image;
 use DB;
 use Brian2694\Toastr\Facades\Toastr;
+use App\Admin\Customer;
+use App\Notifications\NewProductNotify;
+use Illuminate\Support\Facades\Notification;
 
 class ProductController extends Controller
 {
-    // public function __construct(){
-    //     $this->middleware('auth:api')->except('index','show');
-    // }
     /**
      * Display a listing of the resource.
      *
@@ -29,14 +29,10 @@ class ProductController extends Controller
     {
         $products = Product::latest()->get();
     
-        // if(request('/api/admin/product')){
-        //     return response(
-        //         [
-        //         'data' =>ProductResource::collection($products)
-        //         ],201
-        //     );
-        // }
-
+        // Json Format for postman
+        if($request->expectsJson()){
+            return response()->json($products);
+        }
 
         return view('backend.products.index',compact('products'));
     }
@@ -49,7 +45,7 @@ class ProductController extends Controller
     public function create()
     {
         $categories = Category::latest()->get();
-        // return response()->json($categories);
+
         return view('backend.products.create',compact('categories'));
     }
 
@@ -91,7 +87,7 @@ class ProductController extends Controller
             }
         // resize image for category and is_uploaded_file
         $products = Image::make($image)->resize(1600,479)->stream();
-        Storage::disk('public')->put('product/'.$imageName,$products);
+            Storage::disk('public')->put('product/'.$imageName,$products);
         }else{
             $imageName='default.png';
         }
@@ -113,6 +109,18 @@ class ProductController extends Controller
         // dd($product);
         $product->save();
 
+        // Json Format for postman
+        if($request->expectsJson()){
+            return response()->json($product);
+        }
+
+        // Mail Send
+        $customers = Customer::all();
+        foreach($customers as $customer){
+            Notification::route('mail',$customer->email)
+                ->notify(new NewProductNotify($product));
+        }
+
         Toastr::success('Product Saved Successfully','Success');
         
         return redirect()->route('product.index');
@@ -124,9 +132,13 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id,Request $request)
     {
-        //
+        $product = Product::findOrFail($id);
+        // Json Format for postman
+        if($request->expectsJson()){
+            return response()->json($product);
+        }
     }
 
     /**
@@ -172,7 +184,7 @@ class ProductController extends Controller
         $product = Product::findOrFail($id);
 
         if(isset($image)){
-        // make uniqw name for image
+        // make uniqe name for image
         $currentDate = Carbon::now()->toDateString();
         $imageName = $slug.'-'.$currentDate.'-'.uniqid().'.'.$image->getClientOriginalExtension();
         
@@ -207,6 +219,11 @@ class ProductController extends Controller
         $product->qty_per_carton = $request->qty_per_carton;
         $product->save();
 
+        // Json Format for postman
+        if($request->expectsJson()){
+            return response()->json($product);
+        }
+
         Toastr::success('Product Updated Successfully','Success');
 
         return redirect()->route('product.index');
@@ -218,7 +235,7 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id,Request $request)
     {
         $products = Product::find($id);
         // delete  image
@@ -226,6 +243,11 @@ class ProductController extends Controller
             Storage::disk('public')->delete('product/'.$products->image);
         }
         $products->delete();
+
+        // Json Format for postman
+        if($request->expectsJson()){
+            return response()->json($product);
+        }
 
         Toastr::error('Product Deleted Successfully','Success');
 

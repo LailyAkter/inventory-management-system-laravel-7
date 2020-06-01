@@ -7,10 +7,12 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <div class="container-fluid">
-            <div class="row mb-2">
+            <div class="row mb-2 mt-1">
                 <div class="col-sm-6">
                     <a href="{{route('product.create')}}" class='btn btn-primary'>
-                        <i class="fas fa-plus">Add Products</i>
+                        <i class="fas fa-plus">
+                            <span style='margin-left:5px'>Add Product</span>
+                        </i>
                     </a>
                 </div>
             </div>

@@ -15,9 +15,14 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $categories = Category::latest()->get();
+
+        // Json Format for postman
+        if($request->expectsJson()){
+            return response()->json($categories);
+        }
         return view('backend.categories.index',compact('categories'));
     }
 
@@ -46,6 +51,12 @@ class CategoryController extends Controller
         $category->category_name = $request->category_name;
         $category->slug = Str::slug($request->category_name);
         $category->save();
+
+        // Json Format for postman
+        if($request->expectsJson()){
+            return response()->json($category);
+        }
+
         Toastr::success('Category Saved Successfully','Success');
         return redirect()->route('category.index');
     }
@@ -56,10 +67,14 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id,Request $request)
     {
         $category = Category::findOrFail($id);
-        return response()->json($category);
+
+        // Json Format for postman
+        if($request->expectsJson()){
+            return response()->json($category);
+        }
     }
 
     /**
@@ -92,6 +107,12 @@ class CategoryController extends Controller
         $category->category_name = $request->category_name;
         $category->slug = Str::slug($request->category_name);
         $category->save();
+
+        // Json Format for postman
+        if($request->expectsJson()){
+            return response()->json($category);
+        }
+
         Toastr::success('Category Updated Successfully','Success');
         return redirect()->route('category.index');
     }
@@ -102,10 +123,16 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id,Request $request)
     {
         $category = Category::findOrFail($id);
         $category->delete();
+
+        // Json Format for postman
+        if($request->expectsJson()){
+            return response()->json($category);
+        }
+        
         Toastr::error('Category Delete Successfully','Success');
         return redirect()->route('category.index');
     }

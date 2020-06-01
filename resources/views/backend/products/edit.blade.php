@@ -3,7 +3,7 @@
 @section('content')
 <div>
     <section class="content">
-        <div class="row justify-content-center">
+        <div class="row justify-content-center mt-4">
             <div class="col-md-10">
                 <div class="card card-primary">
                     <div class="card-header">
@@ -181,6 +181,7 @@
                             <button type='submit' class='btn btn-success'>Update Product</button>
                             <a href="{{route('product.index')}}" class='btn btn-danger'>Back</a>
                         </form>
+                        
                     </div>
                 </div>
             </div>

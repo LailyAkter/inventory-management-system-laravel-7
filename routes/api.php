@@ -19,7 +19,11 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::namespace('Admin')->prefix('admin')->group(function(){
-    Route::get('expense','ExpenseController@index');
-    // Route::get('product','ProductController@index');
+    Route::apiResource('expense','ExpenseController');
+    Route::apiResource('product','ProductController');
+    Route::apiResource('category','CategoryController');
+    Route::apiResource('supplier','SupplierController');
+    Route::apiResource('customer','CustomerController');
+    Route::apiResource('purchase','PurchaseController');
 });
 

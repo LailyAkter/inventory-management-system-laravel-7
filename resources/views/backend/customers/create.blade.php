@@ -3,7 +3,7 @@
 @section('content')
 <div>
     <section class="content">
-        <div class="row justify-content-center">
+        <div class="row justify-content-center mt-4">
             @if(session('customer'))
                 <div class='alert alert-success mt-3'>{{session('customer')}}</div>
             @endif
@@ -94,6 +94,7 @@
                             <button type='submit' class='btn btn-success'>Create Customer</button>
                             <a href="{{route('customer.index')}}" class='btn btn-danger'>Back</a>
                         </form>
+                        
                     </div>
                 </div>
             </div>

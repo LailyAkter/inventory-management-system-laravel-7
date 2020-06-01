@@ -5,10 +5,12 @@
 <div>
     <section class="content-header">
         <div class="container-fluid">
-            <div class="row mb-2">
+            <div class="row mb-2 mt-1">
                 <div class="col-sm-6">
                     <a href="{{route('supplier.create')}}" class='btn btn-primary'>
-                        <i class="fas fa-plus">Add Supplier</i>
+                        <i class="fas fa-plus">
+                        <span style='margin-left:5px'>Add Supplier</span>
+                        </i>
                     </a>
                 </div>
             </div>
@@ -45,7 +47,7 @@
                                         <th>Email</th>
                                         <th>Phone</th>
                                         <th>Address</th>
-                                        <th>Action</th>
+                                        <th width="8%">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -59,7 +61,7 @@
                                             <td class="project-actions text-right">
                                                 <a class="btn btn-info btn-sm" href="{{route('supplier.edit',$supplier->id)}}">
                                                     <i class="fas fa-pencil-alt"></i>
-                                                    Edit
+                                                    <span style='margin-left:5px'>EDIT</span>
                                                 </a>
                                             </td>
                                             <td>
@@ -68,7 +70,7 @@
                                                     @method('DELETE')
                                                     <button  type='submit' class="btn btn-danger btn-sm mt-3">
                                                         <i class="fas fa-trash"></i>
-                                                        Delete
+                                                        <span style='margin-left:5px'>DELETE</span>
                                                     </button>
                                                 </form>
                                             </td>

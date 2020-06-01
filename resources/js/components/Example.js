@@ -10,9 +10,9 @@ class Example extends React.Component {
         };
     }
     componentDidMount() {
-        Axios.get('http://127.0.0.1:8000/admin/expense').then(response => response.data)
+        Axios.get('http://127.0.0.1:8000/api/admin/expense').then(response => response.data)
             .then((data) => {
-                this.setState({ expenses: data.data })
+                this.setState({ expenses: data })
                 console.log(this.state.expenses)
             })
     }

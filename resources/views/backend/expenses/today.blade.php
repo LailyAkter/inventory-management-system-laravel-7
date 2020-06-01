@@ -6,7 +6,7 @@
     <div>
         <section class="content-header">
             <div class="container-fluid">
-                <div class="row mb-2">
+                <div class="row mb-2 mt-1">
                     <div class="col-md-6">
                         <h2>
                         Today Expense
@@ -39,7 +39,7 @@
                                         <th>Expense Title</th>
                                         <th>Amount</th>
                                         <th>Date</th>
-                                        <th>Actions</th>
+                                        <th width='8%'>Actions</th>
                                     </tr>
                                     </thead>
                                     <tbody>

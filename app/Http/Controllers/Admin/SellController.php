@@ -22,6 +22,7 @@ class SellController extends Controller
         $sells = DB::table('sells')
                 ->leftJoin('products','products.id','=','sells.product_id')
                 ->get(["*","sells.id as id"]);
+
         return view('backend.sells.index',compact('sells'));
     }
 
@@ -33,6 +34,7 @@ class SellController extends Controller
     public function create()
     {
         $products = Product::latest()->get();
+        // dd($products);
         return view('backend.sells.create',compact('products'));
     }
 
@@ -106,5 +108,14 @@ class SellController extends Controller
         $product = Product::latest()->get();
         dd($product->sell_price[]);
         return view('backend.sells.total-profit');
+    }
+
+    //bujsi
+    public function getPrice(Request $request){
+        $product_id = $request->product_id;
+        $price = Product::find($product_id)->sell_price;
+        return response()->json([
+            "price"=>$price
+        ]);
     }
 }

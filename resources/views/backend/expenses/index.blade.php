@@ -5,10 +5,12 @@
 <div>
     <section class="content-header">
         <div class="container-fluid">
-            <div class="row mb-2">
+            <div class="row mb-2 mt-1">
                 <div class="col-sm-6">
                     <a href="{{route('expense.create')}}" class='btn btn-primary' style='font-size:20px;'>
-                        <i class="fas fa-plus">Add Expense</i>
+                        <i class="fas fa-plus">
+                        <span style='margin-left:5px'>Add Expense</span>
+                        </i>
                     </a>
                     <a href="{{url('/admin/today_expense')}}" class='btn btn-danger'>Today Expense</a>
                     <a href="{{URL::to('/admin/month_expense')}}" class='btn btn-info'>Month Expense</a>
@@ -47,7 +49,7 @@
                                         <th>Expense Item</th>
                                         <th>Amount</th>
                                         <th>Date</th>
-                                        <th width='80px'> Action</th>
+                                        <th width='8%'> Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>

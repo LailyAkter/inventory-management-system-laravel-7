@@ -14,9 +14,15 @@ class SupplierController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $suppliers = Supplier::latest()->get();
+
+        // Json Format for postman
+        if($request->expectsJson()){
+            return response()->json($suppliers);
+        }
+
         return view('backend.suppliers.index',compact('suppliers'));
     }
 
@@ -52,6 +58,11 @@ class SupplierController extends Controller
         $supplier->address = $request->address;
         $supplier->save();
 
+        // Json Format for postman
+        if($request->expectsJson()){
+            return response()->json($supplier);
+        }
+
         Toastr::success('Supplier Saved Successfully','Success');
 
         return redirect()->route('supplier.index');
@@ -63,9 +74,13 @@ class SupplierController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id,Request $request)
     {
-        //
+        $supplier = Supplier::findOrFail($id);
+        // Json Format for postman
+        if($request->expectsJson()){
+            return response()->json($supplier);
+        }
     }
 
     /**
@@ -102,6 +117,11 @@ class SupplierController extends Controller
         $supplier->address = $request->address;
         $supplier->save();
 
+        // Json Format for postman
+        if($request->expectsJson()){
+            return response()->json($supplier);
+        }
+
         Toastr::success('Supplier Updated Successfully','Success');
 
         return redirect()->route('supplier.index');
@@ -113,10 +133,15 @@ class SupplierController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id,Request $request)
     {
         $supplier = Supplier::findOrFail($id);
         $supplier->delete();
+
+        // Json Format for postman
+        if($request->expectsJson()){
+            return response()->json($supplier);
+        }
 
         Toastr::error('Supplier Delete Successfully','Success');
 

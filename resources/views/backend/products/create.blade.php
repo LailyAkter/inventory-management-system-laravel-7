@@ -3,7 +3,7 @@
 @section('content')
 <div>
     <section class="content">
-        <div class="row justify-content-center">
+        <div class="row justify-content-center mt-4">
             <div class="col-md-10">
                 <div class="card card-primary">
                     <div class="card-header">
@@ -34,7 +34,7 @@
                             </div>
                             <div class='form-group'>
                                 <label>Feature Image</label>
-                                <div class="custom-file mb-4">
+                                <div class="custom-file mb-2">
                                     <input 
                                         type="file" 
                                         class="custom-file-input  @error('image') is-invalid @enderror " 
@@ -180,6 +180,7 @@
                             <button type='submit' class='btn btn-success'>Create Product</button>
                             <a href="{{route('product.index')}}" class='btn btn-danger'>Back</a>
                         </form>
+                        
                     </div>
                 </div>
             </div>

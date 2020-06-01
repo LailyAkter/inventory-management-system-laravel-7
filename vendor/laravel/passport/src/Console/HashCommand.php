@@ -12,7 +12,7 @@ class HashCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'passport:hash';
+    protected $signature = 'passport:hash {--force : Force the operation to run without confirmation prompt}';
 
     /**
      * The console command description.
@@ -29,12 +29,12 @@ class HashCommand extends Command
     public function handle()
     {
         if (! Passport::$hashesClientSecrets) {
-            $this->warn('Please enable client hashing yet in your AppServiceProvider before continuning.');
+            $this->warn('Please enable client hashing yet in your AppServiceProvider before continuing.');
 
             return;
         }
 
-        if ($this->confirm('Are you sure you want to hash all client secrets? This cannot be undone.')) {
+        if ($this->option('force') || $this->confirm('Are you sure you want to hash all client secrets? This cannot be undone.')) {
             $model = Passport::clientModel();
 
             foreach ((new $model)->whereNotNull('secret')->cursor() as $client) {
@@ -45,7 +45,7 @@ class HashCommand extends Command
                 $client->timestamps = false;
 
                 $client->forceFill([
-                    'secret' => password_hash($client->secret, PASSWORD_BCRYPT),
+                    'secret' => $client->secret,
                 ])->save();
             }
 

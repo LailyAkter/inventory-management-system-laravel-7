@@ -3,7 +3,7 @@
 @section('content')
 <div>
     <section class="content">
-        <div class="row justify-content-center">
+        <div class="row justify-content-center mt-4">
             <div class="col-md-10">
                 <div class="card card-primary">
                     <div class="card-header">
@@ -16,6 +16,7 @@
                         </div>
                     </div>
                     <div class="card-body">
+
                         <form action="{{route('expense.update',$expense->id)}}" method='post'>
                         @csrf
                         @method('PUT')
@@ -50,6 +51,7 @@
                             <button type='submit' class='btn btn-success'>Update Expense</button>
                             <a href="{{route('expense.index')}}" class='btn btn-danger'>Back</a>
                         </form>
+                        
                     </div>
                 </div>
             </div>

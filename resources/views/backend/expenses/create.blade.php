@@ -3,7 +3,7 @@
 @section('content')
 <div>
     <section class="content">
-        <div class="row justify-content-center">
+        <div class="row justify-content-center mt-4">
             <div class="col-md-10">
                 <div class="card card-primary">
                     <div class="card-header">
@@ -16,6 +16,7 @@
                         </div>
                     </div>
                     <div class="card-body">
+
                         <form action="{{route('expense.store')}}" method='post' enctype="multipart/form-data">
                         @csrf
                             <div class="form-group">
@@ -49,6 +50,7 @@
                             <button type='submit' class='btn btn-success'>Create Expense</button>
                             <a href="{{route('expense.index')}}" class='btn btn-danger'>Back</a>
                         </form>
+
                     </div>
                 </div>
             </div>

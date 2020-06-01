@@ -15,9 +15,15 @@ class PurchaseController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $purchases = Purchase::latest()->get();
+
+        // Json Format for postman
+        if($request->expectsJson()){
+            return response()->json($purchases);
+        }
+
         return view('backend.purchases.index',compact('purchases'));
     }
 
@@ -57,6 +63,12 @@ class PurchaseController extends Controller
         $purchase->buying_price = $request->buying_price;
         $purchase->pur_date = $request->pur_date;
         $purchase->save();
+
+        // Json Format for postman
+        if($request->expectsJson()){
+            return response()->json($purchase);
+        }
+
         Toastr::success('Purchase Saved Successfully','Success');
         return redirect()->route('purchase.index');
     }
@@ -67,9 +79,14 @@ class PurchaseController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id,Request $request)
     {
-        //
+        $purchase = Purchase::findOrFail($id);
+
+        // Json Format for postman
+        if($request->expectsJson()){
+            return response()->json($purchase);
+        }
     }
 
     /**
@@ -110,6 +127,12 @@ class PurchaseController extends Controller
         $purchase->buying_price = $request->buying_price;
         $purchase->pur_date = $request->pur_date;
         $purchase->save();
+
+        // Json Format for postman
+        if($request->expectsJson()){
+            return response()->json($purchase);
+        }
+
         Toastr::success('Purchase Updated Successfully','Success');
         return redirect()->route('purchase.index');
     }
@@ -120,10 +143,16 @@ class PurchaseController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id,Request $request)
     {
         $purchase = Purchase::findOrFail($id);
         $purchase->delete();
+
+        // Json Format for postman
+        if($request->expectsJson()){
+            return response()->json($purchase);
+        }
+
         Toastr::error('Purchase Deleted Successfully','Success');
         return redirect()->route('purchase.index');
     }

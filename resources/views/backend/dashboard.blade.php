@@ -2,7 +2,7 @@
 @section('title','Dashboard')
 @section('content')
 <section class="content">
-    <div class="container-fluid">
+    <div class="container-fluid mt-3 ">
         <!-- Small boxes (Stat box) -->
         <div class="row">
             <div class="col-lg-3 col-6">
@@ -37,13 +37,13 @@
                 <!-- small box -->
                 <div class="small-box bg-warning">
                     <div class="inner">
-                    <h3>44</h3>
-                    <p>User Registrations</p>
+                    <h3>{{$customers->count()}}</h3>
+                    <p>Total Customer</p>
                     </div>
                     <div class="icon">
                     <i class="ion ion-person-add"></i>
                     </div>
-                    <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    <a href="{{route('customer.index')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
             <!-- ./col -->

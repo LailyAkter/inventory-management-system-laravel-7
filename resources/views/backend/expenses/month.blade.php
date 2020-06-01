@@ -6,11 +6,11 @@
     <div>
         <section class="content-header">
             <div class="container-fluid">
-                <div class="row mb-2">
+                <div class="row mb-3 mt-1">
                     <div class="col-md-12">
-                        <h2>
-                        Monthly Expense
-                        <span class='badge bg-blue' style='font-size:20px'>{{ strtoupper($month) }}</span>
+                        <h2 class='mb-2'>
+                            Monthly Expense
+                            <span class='badge bg-blue' style='font-size:20px'>{{ strtoupper($month) }}</span>
                         </h2>
                         <div class='month'>
                             <a href="{{ url('/admin/month_expense', 'january') }}"><span  class='badge bg-blue' style='font-size:20px'>January</span></a>
@@ -53,7 +53,7 @@
                                         <th>Expense Title</th>
                                         <th>Amount</th>
                                         <th>Date</th>
-                                        <th>Actions</th>
+                                        <th width='8%'>Actions</th>
                                     </tr>
                                     </thead>
                                     <tbody>
