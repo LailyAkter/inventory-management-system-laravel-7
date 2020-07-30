@@ -17,12 +17,14 @@ class CreateSellsTable extends Migration
             $table->id();
             $table->integer('amount');
             $table->integer('qty');
-            $table->date('sell_date');
             $table->biginteger('product_id')->unsigned();
             $table->foreign('product_id')
                 ->references('id')
                 ->on('products')
                 ->onDelete('cascade');
+            $table->string('month');
+            $table->string('date');
+            $table->string('year');
             $table->timestamps();
         });
     }

@@ -9,6 +9,7 @@ use App\Admin\Product;
 use DB;
 use App\Admin\ProductSell;
 use Brian2694\Toastr\Facades\Toastr;
+use Carbon\Carbon;
 
 class SellController extends Controller
 {
@@ -49,16 +50,20 @@ class SellController extends Controller
         $data = $request->validate([
             'amount'=>'required',
             'qty'=>'required',
-            'sell_date'=>'required',
         ]);
         
         $product = Product::find($request->product_id);
+
+        $date = Carbon::now();
+
         if($request->qty<$product->quantity && $product->stock > 0 ){
             $sell = new Sell;
             $sell->amount = $request->amount;
             $sell->qty = $request->qty;
-            $sell->sell_date = $request->sell_date;
             $sell->product_id = $request->product_id;
+            $sell->month = $date->format('F');
+            $sell->year = $date->format('Y');
+            $sell->date = $date->format('Y-m-d');
             $sell->save();
 
             $product = Product::find($request->product_id);
@@ -98,19 +103,34 @@ class SellController extends Controller
     }
 
     public function today_sell(){
-        $sells = Sell::latest()->get();
+        $today = date('Y-m-d');
+        $sells =  DB::table('sells')
+            ->leftJoin('products','products.id','=','sells.product_id')
+            ->where('date', $today)
+            ->get(["*","sells.id as id"]);
         return view('backend.sells.today', compact('sells'));
+    }
+
+    public function monthly_sell($month = null){
+        if ($month == null)
+        {
+            $month = date('F');
+        }
+        $sells = DB::table("sells")
+            ->leftJoin("products",'products.id','=','sells.product_id')
+            ->where('month', $month)
+            ->get(['*','sells.id as id']);
+        return view('backend.sells.monthly',compact('sells','month'));
     }
 
 
     public function totalProfit(){
-    
         $product = Product::latest()->get();
         dd($product->sell_price[]);
         return view('backend.sells.total-profit');
     }
 
-    //bujsi
+    // Get price
     public function getPrice(Request $request){
         $product_id = $request->product_id;
         $price = Product::find($product_id)->sell_price;

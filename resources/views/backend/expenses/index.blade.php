@@ -14,7 +14,6 @@
                     </a>
                     <a href="{{url('/admin/today_expense')}}" class='btn btn-danger'>Today Expense</a>
                     <a href="{{URL::to('/admin/month_expense')}}" class='btn btn-info'>Month Expense</a>
-                    <a href="{{URL::to('/admin/yearly_expense')}}" class='btn btn-success'>Yearly Expense</a>
                 </div>
             </div>
         </div>

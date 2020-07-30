@@ -1,5 +1,5 @@
 @extends('layouts.backend.master')
-@section('title','All Sells')
+@section('title','All Sales')
 
 @section('content')
 <div>
@@ -9,12 +9,11 @@
                 <div class="col-sm-6">
                     <a href="{{route('sell.create')}}" class='btn btn-primary' style='font-size:20px;'>
                         <i class="fas fa-plus">
-                        <span style='margin-left:5px'>Add Sell</span>
+                        <span style='margin-left:5px'>Add Sale</span>
                         </i>
                     </a>
-                    <a href="{{url('/admin/today_sell')}}" class='btn btn-danger'>Today Sell</a>
-                    <a href="{{URL::to('/admin/month_sell')}}" class='btn btn-info'>Month Sell</a>
-                    <a href="{{URL::to('/admin/yearly_sell')}}" class='btn btn-success'>Yearly Sell</a>
+                    <a href="{{url('/admin/today_sell')}}" class='btn btn-danger'>Today Sale</a>
+                    <a href="{{URL::to('/admin/monthly_sell')}}" class='btn btn-info'>Monthly Sale</a>
                 </div>
             </div>
         </div>
@@ -50,8 +49,7 @@
                                         <th>Product Name</th>
                                         <th>Price</th>
                                         <th>Quantity</th>
-                                        <th>Sell Date</th>
-                                        <th width='8%'>Action</th>
+                                        <th width='10%'>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -62,7 +60,6 @@
                                             <td>{{$sell->product_name}}</td>
                                             <td>${{number_format($sell->amount,2) }}</td>
                                             <td>{{$sell->qty}}</td>
-                                            <td>{{$sell->sell_date}}</td>
                                             <td>
                                                 <form action="{{route('sell.destroy',$sell->id)}}" method='POST' enctype="multipart/form-data">
                                                     @csrf

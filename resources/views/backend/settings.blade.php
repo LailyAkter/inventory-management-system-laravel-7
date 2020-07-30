@@ -2,9 +2,6 @@
 @section('title','Update User And Reset Password')
 
 @section('content')
-
-     
-
     <div class="row justify-content-center">
         <div class="col-md-10">
             <div class="card mt-5">
@@ -23,16 +20,16 @@
                     <div class="tab-content">
                         <div class="tab-pane  mt-3" role="tabpanel" id="update">
                             <form action="{{url('admin/update/profile')}}" method="post" enctype="multipart/form-data">
-                                @csrf 
+                                @csrf
                                 @method('PUT')
                                 <input type="hidden" name='active' value='1'>
                                 <div class="form-group">
                                     <label class="control-label">Name</label>
-                                    <input 
-                                        type="text" 
-                                        value="{{Auth::user()->name}}" 
-                                        class="form-control @error('name') is-invalid @enderror" 
-                                        name='name' 
+                                    <input
+                                        type="text"
+                                        value="{{Auth::user()->name}}"
+                                        class="form-control @error('name') is-invalid @enderror"
+                                        name='name'
                                         placeholder="Name"
                                     />
                                     @if($errors->has('name'))
@@ -41,11 +38,11 @@
                                 </div>
                                 <div class="form-group">
                                     <label  class="control-label">Email</label>
-                                    <input 
-                                        type="email" 
+                                    <input
+                                        type="email"
                                         value="{{Auth::user()->email}}"
-                                        class="form-control @error('email') is-invalid @enderror" 
-                                        name='email' 
+                                        class="form-control @error('email') is-invalid @enderror"
+                                        name='email'
                                         placeholder="Email"
                                     />
                                     @If($errors->has('email'))
@@ -54,18 +51,18 @@
                                 </div>
                                 <div class="form-group">
                                     <label  class="control-label">Profile Image</label>
-                                    <input 
-                                        type="file" 
+                                    <input
+                                        type="file"
                                         value="{{Auth::user()->image}}"
-                                        class="form-control @error('image') is-invalid @enderror" 
-                                        name='image' 
+                                        class="form-control @error('image') is-invalid @enderror"
+                                        name='image'
                                         placeholder="Image"
                                     />
                                     @if($errors->has('image'))
                                         <div class='invalid-feedback'>Profile Image is Required</div>
                                     @endif
                                 </div>
-                                
+
                                 <div class="form-group">
                                     <button type="submit" class="btn btn-success">Submit</button>
                                 </div>
@@ -78,10 +75,10 @@
                                 <input type="hidden" name='active' value='2'>
                                 <div class="form-group">
                                     <label class="control-label">Old Password</label>
-                                    <input 
-                                        type="password" 
-                                        class="form-control @error('old_password') is-invalid @enderror" 
-                                        name='old_password' 
+                                    <input
+                                        type="password"
+                                        class="form-control @error('old_password') is-invalid @enderror"
+                                        name='old_password'
                                         placeholder="Old Password"
                                     />
                                     @If($errors->has('old_password'))
@@ -90,10 +87,10 @@
                                 </div>
                                 <div class="form-group">
                                     <label class="control-label">New Password</label>
-                                    <input 
-                                        type="password" 
-                                        class="form-control @error('password') is-invalid @enderror" 
-                                        name='password' 
+                                    <input
+                                        type="password"
+                                        class="form-control @error('password') is-invalid @enderror"
+                                        name='password'
                                         placeholder="Enter New Password"
                                     />
                                     @If($errors->has('password'))
@@ -102,10 +99,10 @@
                                 </div>
                                 <div class="form-group">
                                     <label class="control-label">Confirm Password</label>
-                                    <input 
-                                        type="password" 
-                                        class="form-control" 
-                                        name='password_confirmation' 
+                                    <input
+                                        type="password"
+                                        class="form-control"
+                                        name='password_confirmation'
                                         placeholder="Enter Password Again"
                                     />
                                 </div>
@@ -116,7 +113,7 @@
                         </div>
                     </div>
                 </div>
-            </div>        
+            </div>
         </div>
 
         <script>
@@ -140,13 +137,13 @@
             let content = document.querySelector("#update");
             tebpen.classList.add("active")
             content.classList.add("active")
-             
+
            }else{
                let tebpen = document.querySelector(".nav-link[href='#change']");
             let content = document.querySelector("#change");
             tebpen.classList.add("active")
              content.classList.add("active")
-             
+
            }
         </script>
     </div>

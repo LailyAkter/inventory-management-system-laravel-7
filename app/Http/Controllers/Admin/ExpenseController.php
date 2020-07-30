@@ -155,13 +155,6 @@ class ExpenseController extends Controller
     {
         $today = date('Y-m-d');
         $expenses = Expense::latest()->where('date', $today)->get();
-        // if($request->acceptsJson()){
-        //     return response(
-        //         [
-        //         'data' =>ExpenseResource::collection($expenses)
-        //         ],201
-        //     );
-        // }
         return view('backend.expenses.today', compact('expenses'));
     }
 
@@ -172,33 +165,6 @@ class ExpenseController extends Controller
             $month = date('F');
         }
         $expenses = Expense::latest()->where('month', $month)->get();
-        // if($request->acceptsJson()){
-        //     return response(
-        //         [
-        //         'data' =>ExpenseResource::collection($expenses)
-        //         ],201
-        //     );
-        // }
         return view('backend.expenses.month', compact('expenses', 'month'));
-    }
-
-    public function yearly_expense($year = null)
-    {
-        if ($year == null)
-        {
-            $year = date('Y');
-        }
-
-        $expenses = Expense::latest()->where('year', $year)->get();
-        
-        $years = Expense::select('year')->distinct()->take(12)->get();
-        // if($request->acceptsJson()){
-        //     return response(
-        //         [
-        //         'data' =>ExpenseResource::collection($expenses)
-        //         ],201
-        //     );
-        // }
-        return view('backend.expenses.year', compact('expenses', 'year', 'years'));
     }
 }

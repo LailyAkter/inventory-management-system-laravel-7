@@ -1,5 +1,5 @@
 @extends('layouts.backend.master')
-@section('title','Add Sell')
+@section('title','Add Sale')
 @section('content')
 <div>
     <section class="content">
@@ -7,7 +7,7 @@
             <div class="col-md-10">
                 <div class="card card-primary">
                     <div class="card-header">
-                        <h3 class="card-title">Add New Sell</h3>
+                        <h3 class="card-title">Add New Sale</h3>
                         <div class="card-tools">
                             <button type="button" class="btn btn-tool" data-card-widget="collapse"
                             data-toggle="tooltip" title="Collapse">
@@ -60,21 +60,7 @@
                                     <span class='invalid-feedback'>Quantity is Required</span>
                                 @endif
                             </div>
-                            <div class="form-group">
-                                <label for="inputName">Sell Date</label>
-                                <input 
-                                    type="date" 
-                                    id="inputName" 
-                                    class="form-control @error('sell_date') is-invalid @enderror" 
-                                    name='sell_date'
-                                    placeholder='Sell Date'
-                                    value="{{old('sell_date')}}"
-                                />
-                                @if($errors->has('sell_date'))
-                                    <span class='invalid-feedback'>Sell Date is Required</span>
-                                @endif
-                            </div>
-                            <button type='submit' class='btn btn-success'>Create Sell</button>
+                            <button type='submit' class='btn btn-success'>Create Sale</button>
                             <a href="{{route('sell.index')}}" class='btn btn-danger'>Back</a>
                         </form>
 
@@ -90,7 +76,7 @@
         var value = event.target.value;
         //ajax
         //get the value
-        fetch('http://localhost/inventory-management-system/inventory-server/public/admin/api/getprice?product_id='+value).then(res=>{return res.json()}).then(res=>{
+        fetch('http://127.0.0.1:8000/admin/api/getprice?product_id='+value).then(res=>{return res.json()}).then(res=>{
             document.getElementById("price").value=res.price;
         })
         // $.ajax({
@@ -100,8 +86,6 @@
         //         document.getElementById("price").value=returnData.price;
         //     }
         // })
-
-
     })
 </script>
 @endsection

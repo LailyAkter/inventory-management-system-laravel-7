@@ -70,12 +70,6 @@
                             <p>Monthly Expense</p>
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a href="{{url('/admin/yearly_expense')}}" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>Yearly Expense</p>
-                        </a>
-                    </li>
                 </ul>
             </li>
             <!-- Product -->
@@ -89,32 +83,26 @@
             <li class="nav-item has-treeview">
                 <a href="#" class="nav-link">
                     <i class="nav-icon fas fa-plus-square"></i>
-                    <p>Sell</p>
+                    <p>Sale</p>
                     <i class="right fas fa-angle-left"></i>
                 </a>
                 <ul class="nav nav-treeview">
                     <li class="nav-item">
                         <a href="{{route('sell.index')}}" class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
-                            <p>All Sell</p>
+                            <p>All Sale</p>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="{{URL::to('admin/today_sell')}}" class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
-                            <p>Today Sell</p>
+                            <p>Today Sale</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
+                        <a href="{{URL::to('/admin/monthly_sell')}}" class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
-                            <p>Monthly Sell</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>Yearly Sell</p>
+                            <p>Monthly Sale</p>
                         </a>
                     </li>
                 </ul>

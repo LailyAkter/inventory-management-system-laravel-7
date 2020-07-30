@@ -1,15 +1,12 @@
 @extends('layouts.backend.master')
-@section('title', 'Today Sell')
+@section('title', 'Today Sale')
 @section('content')
     <div>
         <section class="content-header">
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-md-6">
-                        <h2>
-                        Today Sell
-                        <span  class='badge bg-blue' style='font-size:25px'>{{ date('d F Y') }}</span>
-                        </h2>
+                        <span style='font-size:25px'>Date:</span> <span class='text-primary' style='font-size:25px'>{{ date('d F Y') }}</span>
                     </div>
                 </div>
             </div>
@@ -25,7 +22,8 @@
                         <div class="card">
                             <div class="card-header"> 
                                 <h3 class="card-title">
-                                    Total Sells : <span class='badge bg-red' style='font-size:18px'>{{ $sells->count('amount') }}</span>
+                                Today Sales
+                                <span class='badge bg-info'>{{$sells->count()}}</span>
                                 </h3>
                             </div>
                             <!-- /.card-header -->

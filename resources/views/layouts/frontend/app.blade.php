@@ -17,7 +17,7 @@
     <!-- Main -->
     <link rel="stylesheet" href="{{asset('client/css/style.css')}}">
     <!-- styles -->
-    <link href="/css/app.css" rel="stylesheet"></link>
+    <!-- <link href="/css/app.css" rel="stylesheet"></link> -->
 
 </head>
 <body>
@@ -71,7 +71,7 @@
     <script src="{{asset('client/js/script.js')}}"></script>
 
     <!-- Scripts -->
-    <script src="/js/app.js"></script>
+    <!-- <script src="/js/app.js"></script> -->
 </body>
 </html>
 
